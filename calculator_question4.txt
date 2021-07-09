@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator Question!</title>
+</head>
+<body>
+	<form method="POST">
+		Number 1:<input type="text" name="n1"><br>
+		Operation:
+		<select name="op">
+			<option value="+"> + </option>
+			<option value="-"> - </option>
+			<option value="*"> * </option>
+			<option value="/"> / </option>
+		</select><br>
+		Number 3:<input type="text" name="n2"><br>
+		<input type="submit" name="Calculate" value="Calculate">
+	</form>
+</body>
+</html>
+
+<?php
+class Calculation {
+
+	public function compute($num1, $num2, $opera) {
+		$calc = 0;
+		switch ($opera) {
+			case '+':
+				$calc = $num1 + $num2;
+				break;
+
+			case '-':
+				$calc = $num1 - $num2;
+				break;
+
+			case '*':
+				$calc = $num1 * $num2;
+				break;
+
+			case '/':
+				$calc = $num1 / $num2;
+				break;
+			
+			default:
+				echo "Invalid operation";
+				break;
+			}
+			return $calc;
+		}
+	}
+
+	if(isset($_POST['Calculate'])) {
+		$calcobj= new Calculation();
+		echo $calcobj->compute($_POST['n1'], $_POST['n2'], $_POST['op']);
+	}
+?>
